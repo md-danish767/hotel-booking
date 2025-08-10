@@ -1,0 +1,13 @@
+<svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .cls-1 { fill: #FF5A5F; } /* Primary color for icon */
+    .cls-2 { fill: #000000; } /* Text color - full black */
+    .cls-3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; }
+  </style>
+  <g id="logo">
+    <rect class="cls-1" x="0" y="5" width="30" height="30" rx="15" />
+    <path class="cls-2" d="M15,10l-8,7v10h16v-10l-8-7zM15,12.72l5.77,5.08h-11.54L15,12.72zM19,25h-8v-6h8v6z" transform="translate(0 0)"/>
+    
+    <text class="cls-2 cls-3" x="40" y="29">HomeStay</text>
+  </g>
+</svg>
