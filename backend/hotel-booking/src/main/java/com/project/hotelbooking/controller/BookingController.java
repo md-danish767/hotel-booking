@@ -44,10 +44,13 @@ public class BookingController {
         List<MyBookingsDto> myBookings = bookingService.getMyBookings();
         return ResponseEntity.ok(myBookings);
     }
-    @PostMapping("/create-payment-intent")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentDto paymentDto) throws StripeException {
-        String clientSecret = bookingService.createPaymentIntent(paymentDto);
-        return ResponseEntity.ok(clientSecret);
-    }
+	/*
+	 * @PostMapping("/create-payment-intent")
+	 * 
+	 * @PreAuthorize("hasRole('ROLE_USER')") public ResponseEntity<String>
+	 * createPaymentIntent(@RequestBody PaymentDto paymentDto) throws
+	 * StripeException { String clientSecret =
+	 * bookingService.createPaymentIntent(paymentDto); return
+	 * ResponseEntity.ok(clientSecret); }
+	 */
 }

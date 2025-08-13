@@ -128,27 +128,26 @@ public class BookingService {
         }).collect(Collectors.toList());
     }
     
-    @Value("${stripe.secret.key}")
-    private String stripeSecretKey;
-
-    public String createPaymentIntent(PaymentDto paymentDto) throws StripeException {
-        Stripe.apiKey = stripeSecretKey;
-
-        Booking booking = bookingRepository.findById(paymentDto.getBookingId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Booking not found."));
-
-        if (booking.getStatus() == BookingStatus.CONFIRMED) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Booking is already paid.");
-        }
-
-        PaymentIntentCreateParams params =
-            PaymentIntentCreateParams.builder()
-                .setAmount(booking.getTotalPrice().longValue() * 100L) // Stripe requires amount in cents
-                .setCurrency("usd")
-                .addPaymentMethodType("card") // Use this to add a single payment method
-                .build();
-
-        PaymentIntent paymentIntent = PaymentIntent.create(params);
-        return paymentIntent.getClientSecret();
-    }
+	/*
+	 * @Value("${stripe.secret.key}") private String stripeSecretKey;
+	 * 
+	 * public String createPaymentIntent(PaymentDto paymentDto) throws
+	 * StripeException { Stripe.apiKey = stripeSecretKey;
+	 * 
+	 * Booking booking = bookingRepository.findById(paymentDto.getBookingId())
+	 * .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+	 * "Booking not found."));
+	 * 
+	 * if (booking.getStatus() == BookingStatus.CONFIRMED) { throw new
+	 * ResponseStatusException(HttpStatus.BAD_REQUEST, "Booking is already paid.");
+	 * }
+	 * 
+	 * PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
+	 * .setAmount(booking.getTotalPrice().longValue() * 100L) // Stripe requires
+	 * amount in cents .setCurrency("usd") .addPaymentMethodType("card") // Use this
+	 * to add a single payment method .build();
+	 * 
+	 * PaymentIntent paymentIntent = PaymentIntent.create(params); return
+	 * paymentIntent.getClientSecret(); }
+	 */
 }
