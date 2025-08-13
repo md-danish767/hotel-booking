@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Title from './Title';
+import Title from '../components/Title';
 import HotelCard from '../components/HotelCard';
 import axios from 'axios';
 
 const FeaturedDestination = () => {
     const navigate = useNavigate();
-    const [featuredHotels, setFeaturedHotels] = useState([]);
+    const [featuredHotels, setFeaturedHotels] = useState([]); // Initialize with an empty array
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
