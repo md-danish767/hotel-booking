@@ -19,7 +19,7 @@ const Dashboard = () => {
 
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:8080/api/vendor/dashboard', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/vendor/dashboard`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -40,7 +40,7 @@ const Dashboard = () => {
     const handleApproveBooking = async (bookingId) => {
         const token = localStorage.getItem('jwtToken');
         try {
-            await axios.patch(`http://localhost:8080/api/bookings/vendor/${bookingId}/approve`, {}, {
+            await axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/vendor/${bookingId}/approve`, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },

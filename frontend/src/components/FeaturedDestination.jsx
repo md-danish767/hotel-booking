@@ -13,7 +13,7 @@ const FeaturedDestination = () => {
     useEffect(() => {
         const fetchFeaturedHotels = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/public/featured-hotels');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/featured-hotels`);
                 setFeaturedHotels(response.data);
             } catch (err) {
                 setError('Failed to fetch featured hotels.');

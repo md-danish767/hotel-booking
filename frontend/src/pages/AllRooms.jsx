@@ -87,7 +87,7 @@ const AllRooms = () => {
                 params.sortBy = selectedSortOption;
             }
 
-            const response = await axios.get('http://localhost:8080/api/public/rooms', { params });
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/rooms`, { params });
             setRooms(response.data);
         } catch (err) {
             setError('Failed to fetch rooms.');

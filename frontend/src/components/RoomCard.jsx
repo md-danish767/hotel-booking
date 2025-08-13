@@ -7,7 +7,7 @@ const RoomCard = ({ room, handleBookNow }) => {
 
     return (
         <div className="bg-white p-4 rounded-xl shadow-lg">
-            <img src={`http://localhost:8080${room.images[0]}`} alt={room.roomType} className="w-full h-48 object-cover rounded-xl" />
+            <img src={`${import.meta.env.VITE_API_URL}${room.images[0]}`} alt={room.roomType} className="w-full h-48 object-cover rounded-xl" />
             <h3 className="text-xl font-playfair mt-4">{room.roomType}</h3>
             <p className="text-gray-600">Price: Rs.{room.pricePerNight}/night</p>
             <p className="text-gray-600">Capacity: {room.capacity} guests</p>

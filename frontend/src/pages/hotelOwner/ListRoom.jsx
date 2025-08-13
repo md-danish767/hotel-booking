@@ -19,7 +19,7 @@ const ListRoom = () => {
         }
 
         try {
-            const response = await axios.get('http://localhost:8080/api/vendor/rooms', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/vendor/rooms`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -41,7 +41,7 @@ const ListRoom = () => {
         const token = localStorage.getItem('jwtToken');
         try {
             await axios.patch(
-                `http://localhost:8080/api/vendor/rooms/${roomId}/toggle-availability`,
+                `${import.meta.env.VITE_API_URL}/api/vendor/rooms/${roomId}/toggle-availability`,
                 {},
                 {
                     headers: {

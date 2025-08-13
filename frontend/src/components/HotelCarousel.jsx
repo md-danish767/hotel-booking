@@ -14,7 +14,7 @@ const HotelCarousel = ({ hotel }) => {
     return (
         <div onClick={handleCardClick} className='bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 w-full md:w-[350px]'>
             <img
-                src={hotel.imageUrl ? `http://localhost:8080${hotel.imageUrl}` : `https://placehold.co/400x250/E0E0E0/333333?text=${hotel.name.split(' ')[0]}`}
+                src={hotel.imageUrl ? `${import.meta.env.VITE_API_URL}${hotel.imageUrl}` : `https://placehold.co/400x250/E0E0E0/333333?text=${hotel.name.split(' ')[0]}`}
                 alt={hotel.name}
                 className='w-full h-48 object-cover'
             />

@@ -28,7 +28,7 @@ const HotelDetails = () => {
     useEffect(() => {
         const fetchHotelDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/public/hotels/${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/hotels/${id}`);
                 setHotel(response.data);
                 
                 const roomImages = response.data.rooms.flatMap(room => room.images);
@@ -36,7 +36,7 @@ const HotelDetails = () => {
                 setAllHotelImages(allImages);
                 setMainImage(response.data.imageUrl);
 
-                const reviewsResponse = await axios.get(`http://localhost:8080/api/public/hotels/${id}/reviews`);
+                const reviewsResponse = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/hotels/${id}/reviews`);
                 setReviews(reviewsResponse.data);
                 
             } catch (err) {
@@ -62,7 +62,7 @@ const HotelDetails = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:8080/api/public/hotels/${id}/available-rooms`, {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/hotels/${id}/available-rooms`, {
                 params: { checkInDate, checkOutDate },
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -94,7 +94,7 @@ const HotelDetails = () => {
                 guestCount: guests,
             };
 
-            const response = await axios.post('http://localhost:8080/api/bookings', bookingDto, {
+            const response = await axios.post('${import.meta.env.VITE_API_URL}/api/bookings', bookingDto, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const HotelDetails = () => {
         }
 
         try {
-            const response = await axios.post(`http://localhost:8080/api/public/hotels/${id}/reviews`, newReview, {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/public/hotels/${id}/reviews`, newReview, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -159,12 +159,12 @@ const HotelDetails = () => {
 
                 {/* Left Side: Image Gallery */}
                 <div className="md:w-2/3 flex flex-col gap-4">
-                    <img src={`http://localhost:8080${mainImage}`} alt="Main Hotel" className='w-full h-96 object-cover rounded-xl shadow-md' />
+                    <img src={`${import.meta.env.VITE_API_URL}${mainImage}`} alt="Main Hotel" className='w-full h-96 object-cover rounded-xl shadow-md' />
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                         {allHotelImages.slice(0, 4).map((image, index) => (
                             <img
                                 key={index}
-                                src={`http://localhost:8080${image}`}
+                                src={`${import.meta.env.VITE_API_URL}${image}`}
                                 alt={`Room image ${index}`}
                                 className={`w-full h-24 object-cover rounded-xl shadow-md cursor-pointer transition-transform duration-200 ${mainImage === image ? 'ring-2 ring-primary scale-105' : 'hover:scale-105'}`}
                                 onClick={() => setMainImage(image)}

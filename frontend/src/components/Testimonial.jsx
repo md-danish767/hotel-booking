@@ -12,7 +12,7 @@ const Testimonial = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/public/reviews');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/reviews`);
                 setReviews(response.data);
             } catch (err) {
                 setError('Failed to fetch testimonials.');

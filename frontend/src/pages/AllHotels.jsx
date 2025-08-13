@@ -24,7 +24,7 @@ const AllHotels = () => {
     useEffect(() => {
         const fetchCities = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/public/cities');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/cities`);
                 setAvailableCities(response.data);
             } catch (err) {
                 console.error('Failed to fetch cities.');
@@ -45,7 +45,7 @@ const AllHotels = () => {
                 params.append('sortBy', selectedSortOption);
             }
 
-            const response = await axios.get('http://localhost:8080/api/public/hotels', { params });
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/hotels`, { params });
             setHotels(response.data);
         } catch (err) {
             setError('Failed to fetch hotels.');
@@ -113,7 +113,7 @@ const AllHotels = () => {
                         <div key={hotel.id} className='bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300'
                              onClick={() => navigate(`/hotels/${hotel.id}`)}>
                             <img
-                                src={hotel.imageUrl ? `http://localhost:8080${hotel.imageUrl}` : `https://placehold.co/400x250/E0E0E0/333333?text=${hotel.name.split(' ')[0]}`}
+                                src={hotel.imageUrl ? `${import.meta.env.VITE_API_URL}${hotel.imageUrl}` : `https://placehold.co/400x250/E0E0E0/333333?text=${hotel.name.split(' ')[0]}`}
                                 alt={hotel.name}
                                 className='w-full h-48 object-cover'
                             />

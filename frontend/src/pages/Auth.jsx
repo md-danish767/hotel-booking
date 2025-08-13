@@ -29,7 +29,7 @@ const Auth = () => {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/login', loginForm);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, loginForm);
             localStorage.setItem('jwtToken', response.data.accessToken);
             localStorage.setItem('userRole', response.data.role);
             toast.success('Login successful!');

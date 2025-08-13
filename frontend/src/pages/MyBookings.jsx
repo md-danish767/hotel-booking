@@ -19,7 +19,7 @@ const MyBookings = () => {
             }
 
             try {
-                const response = await axios.get('http://localhost:8080/api/bookings/me', {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/bookings/me`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
@@ -53,7 +53,7 @@ const MyBookings = () => {
                     <div key={booking.id} className='grid grid-cols-1 md:grid-cols-[3fr_2fr_1fr] w-full border-b border-gray-300 py-6 first:border-t'>
                         <div className='flex flex-col md:flex-row'>
                             {booking.roomImages && booking.roomImages.length > 0 && (
-                                <img src={`http://localhost:8080${booking.roomImages[0]}`} alt="hotel-img" className='min-md:w-44 rounded shadow object-cover' />
+                                <img src={`${import.meta.env.VITE_API_URL}${booking.roomImages[0]}`} alt="hotel-img" className='min-md:w-44 rounded shadow object-cover' />
                             )}
                             <div className='flex flex-col gap-1.5 max-md:mt-3 min-md:ml-4'>
                                 <p className='font-playfair text-2xl'>{booking.hotelName}<span className='font-inter text-sm'> ({booking.roomType})</span></p>

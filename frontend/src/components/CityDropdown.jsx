@@ -11,7 +11,7 @@ const CityDropdown = () => {
     useEffect(() => {
         const fetchCities = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/public/cities');
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/public/cities`);
                 setCities(response.data);
             } catch (error) {
                 console.error('Failed to fetch cities:', error);

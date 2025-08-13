@@ -73,7 +73,7 @@ const AddRoom = () => {
     const token = localStorage.getItem('jwtToken');
 
     try {
-      await axios.post('http://localhost:8080/api/vendor/rooms', formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/vendor/rooms`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
